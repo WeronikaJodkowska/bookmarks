@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.twitter.TwitterOAuth',
 ]
 
 ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+
+SOCIAL_AUTH_TWITTER_KEY = 'klDpqC4AfFZYa70A101C63Mea'
+SOCIAL_AUTH_TWITTER_SECRET = 'J2HmyOD8YUjNC3gLGCOrFBALmv98NAphIjj02iMdXvRg11gbPh'
