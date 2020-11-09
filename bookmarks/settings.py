@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'django_extensions',
+    'images.apps.ImagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -142,9 +143,13 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
     'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 SOCIAL_AUTH_TWITTER_KEY = 'klDpqC4AfFZYa70A101C63Mea'
 SOCIAL_AUTH_TWITTER_SECRET = 'J2HmyOD8YUjNC3gLGCOrFBALmv98NAphIjj02iMdXvRg11gbPh'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '949817039508-iap3f0ae2s265kmq324trdbfpk4mrf9s.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'oLm3mLrOw_goxLjjYVkXR3SX'
