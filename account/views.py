@@ -40,17 +40,16 @@ def user_login(request):
 def dashboard(request):
     # Display all actions by default
     actions = Action.objects.exclude(user=request.user)
-    following_ids = request.user.following.values_list('id',
-                                                       flat=True)
+    following_ids = request.user.following.values_list('id', flat=True)
     if following_ids:
         # If user is following others, retrieve only their actions
         actions = actions.filter(user_id__in=following_ids)
-        actions = actions.select_related('user', 'user__profile').prefetch_related('target')[:10]
+    actions = actions.select_related('user', 'user__profile').prefetch_related('target')[:10]
 
-        return render(request,
-                      'account/dashboard.html',
-                      {'section': 'dashboard',
-                       'actions': actions})
+    return render(request,
+                  'account/dashboard.html',
+                  {'section': 'dashboard',
+                   'actions': actions})
 
 
 def register(request):
@@ -129,9 +128,8 @@ def user_follow(request):
         try:
             user = User.objects.get(id=user_id)
             if action == 'follow':
-                Contact.objects.get_or_create(
-                    user_from=request.user,
-                    user_to=user)
+                Contact.objects.get_or_create(user_from=request.user,
+                                              user_to=user)
                 create_action(request.user, 'is following', user)
             else:
                 Contact.objects.filter(user_from=request.user,

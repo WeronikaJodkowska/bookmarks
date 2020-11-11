@@ -17,7 +17,7 @@ def create_action(user, verb, target=None):
                                                  target_id=target.id)
     if not similar_actions:
         # no existing actions found
-        action = Action(user=user, verb=verb, target=None)
+        action = Action(user=user, verb=verb, target=target)
         action.save()
         return True
     return False
